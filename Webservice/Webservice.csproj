@@ -81,12 +81,6 @@
     <Compile Include="Contracts\GameIdPlayersPostRequestContent.cs">
       <DependentUpon>api_v1.raml</DependentUpon>
     </Compile>
-    <Compile Include="Contracts\GameIdPostOKResponseContent.cs">
-      <DependentUpon>api_v1.raml</DependentUpon>
-    </Compile>
-    <Compile Include="Contracts\GameIdPostRequestContent.cs">
-      <DependentUpon>api_v1.raml</DependentUpon>
-    </Compile>
     <Compile Include="Contracts\GamesController.cs">
       <DependentUpon>api_v1.raml</DependentUpon>
     </Compile>
