@@ -1,0 +1,49 @@
+#%RAML 0.8
+
+title: GitHub Game API
+baseUri: http://ghgame.mikaelec.com/api/{version}
+version: v1
+
+/games:
+    post:
+        body:
+            application/json:
+                schema: |
+                    { "$schema": "http://json-schema.org/schema",
+                        "type": "object",
+                        "description": "A new game",
+                        "properties": {
+                        "repoURL":  { "type": "string" }
+                        },
+                        "required": [ "repoURL" ]
+                    }
+        responses:
+            200:
+                body:
+                    application/json:
+                        schema: |
+                            {
+                                "$schema": "http://json-schema.org/schema",
+                                "type": "object",
+                                "description": "A game response",
+                                "properties": {
+                                    "gameId": { "type": "string" }
+                                },
+                                "required": [ "gameId" ]
+                            }      
+    /{gameId}/players:
+        post:
+            body:
+                application/json:
+                    schema: |
+                        { "$schema": "http://json-schema.org/schema",
+                            "type": "object",
+                            "description": "A new player",
+                            "properties": {
+                            "playerName":  { "type": "string" }
+                            },
+                            "required": [ "playerName" ]
+                        }
+        /{playerId}:
+            delete:
+                description: Kick a player

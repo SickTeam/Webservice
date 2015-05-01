@@ -1,0 +1,4 @@
+#Ignore generated .cs files
+
+Templates
+*.cs
