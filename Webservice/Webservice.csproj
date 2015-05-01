@@ -78,6 +78,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Contracts\CommitGetOKResponseContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\GameIdGetOKResponseContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
     <Compile Include="Contracts\GameIdPlayersPostRequestContent.cs">
       <DependentUpon>api_v1.raml</DependentUpon>
     </Compile>
@@ -90,7 +96,19 @@
     <Compile Include="Contracts\GamesPostRequestContent.cs">
       <DependentUpon>api_v1.raml</DependentUpon>
     </Compile>
+    <Compile Include="Contracts\GuessesGetOKResponseContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
     <Compile Include="Contracts\IGamesController.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\PlayerIdGetOKResponseContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\PlayersPostOKResponseContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\PlayersPostRequestContent.cs">
       <DependentUpon>api_v1.raml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\GamesController.cs" />

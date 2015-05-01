@@ -11,9 +11,8 @@ version: v1
                 schema: |
                     { "$schema": "http://json-schema.org/schema",
                         "type": "object",
-                        "description": "A new game",
                         "properties": {
-                        "repoURL":  { "type": "string" }
+                            "repoURL":  { "type": "string" }
                         },
                         "required": [ "repoURL" ]
                     }
@@ -25,25 +24,111 @@ version: v1
                             {
                                 "$schema": "http://json-schema.org/schema",
                                 "type": "object",
-                                "description": "A game response",
                                 "properties": {
-                                    "gameId": { "type": "string" }
+                                    "gameId": { "type": "string" },
+                                    "playerId": { "type": "string" }
                                 },
-                                "required": [ "gameId" ]
-                            }      
-    /{gameId}/players:
-        post:
-            body:
-                application/json:
-                    schema: |
-                        { "$schema": "http://json-schema.org/schema",
-                            "type": "object",
-                            "description": "A new player",
-                            "properties": {
-                            "playerName":  { "type": "string" }
-                            },
-                            "required": [ "playerName" ]
-                        }
-        /{playerId}:
-            delete:
-                description: Kick a player
+                                "required": [ "gameId", "playerId" ]
+                            }
+    /{gameId}:
+        get:
+            responses:
+                200:
+                    body:
+                        application/json:
+                            schema: |
+                                { "$schema": "http://json-schema.org/schema",
+                                    "type": "object",
+                                    "properties": {
+                                        "guessedCommits": { "type": "integer" },
+                                        "playingTo": { "type": "integer" }
+                                    },
+                                    "required": [ "scores", "guessedCommits", "playingTo" ]
+                                }
+
+        /commit:
+            get:
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                schema: |
+                                    { "$schema": "http://json-schema.org/schema",
+                                        "type": "object",
+                                        "description": "A new player",
+                                        "properties": {
+                                            "message":  { "type": "string" },
+                                            "rating": { "type": "number" }
+                                        },
+                                        "required": [ "message", "rating" ]
+                                    }
+
+            /guesses:
+                get:
+                    responses:
+                        200:
+                            body:
+                                application/json:
+                                    schema: |
+                                        {
+                                            "$schema": "http://json-schema.org/schema",
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "playerId": { "type": "string" },
+                                                        "committerGuess": { "type": "string" },
+                                                        "correct": { "type": "boolean" }
+                                                    },
+                                                    "required": [ "playerId" ]
+                                                }
+                                            ]
+                                        }
+
+                /{playerId}:
+                    get:
+                        responses:
+                            200:
+                                body:
+                                    application/json:
+                                        schema: |
+                                            { "$schema": "http://json-schema.org/schema",
+                                                "type": "object",
+                                                "properties": {
+                                                    "committerGuess": { "type": "string" },
+                                                    "correct": { "type": "boolean" }
+                                                },
+                                                "required": [ "playerId" ]
+                                            }
+
+
+        /players:
+            post:
+                body:
+                    application/json:
+                        schema: |
+                            { "$schema": "http://json-schema.org/schema",
+                                "type": "object",
+                                "description": "A new player",
+                                "properties": {
+                                "playerName":  { "type": "string" }
+                                },
+                                "required": [ "playerName" ]
+                            }
+                responses:
+                    200:
+                        body:
+                            application/json:
+                                schema: |
+                                    { "$schema": "http://json-schema.org/schema",
+                                        "type": "object",
+                                        "properties": {
+                                            "playerId":  { "type": "string" }
+                                        },
+                                        "required": [ "playerId" ]
+                                    }
+                            
+            /{playerId}:
+                delete:
+                    description: Kick a player
