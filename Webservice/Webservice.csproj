@@ -78,6 +78,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Contracts\GameIdPlayersPostRequestContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\GameIdPostOKResponseContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\GameIdPostRequestContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\GamesController.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\GamesPostOKResponseContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\GamesPostRequestContent.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\IGamesController.cs">
+      <DependentUpon>api_v1.raml</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -95,7 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
